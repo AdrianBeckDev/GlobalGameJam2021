@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/goose.escn-8cb713d10383b147382d3f82e5764e53.scn"
+path="res://.import/bear.gltf-286eae581c08554c0ab145bd30c5a651.scn"
 
 [deps]
 
-source_file="res://assets/goose.escn"
-dest_files=[ "res://.import/goose.escn-8cb713d10383b147382d3f82e5764e53.scn" ]
+source_file="res://assets/bear.gltf"
+dest_files=[ "res://.import/bear.gltf-286eae581c08554c0ab145bd30c5a651.scn" ]
 
 [params]
 
@@ -27,7 +27,7 @@ meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 external_files/store_in_subdir=false
 animation/import=true
-animation/fps=24.0
+animation/fps=15
 animation/filter_script=""
 animation/storage=false
 animation/keep_custom_tracks=false
