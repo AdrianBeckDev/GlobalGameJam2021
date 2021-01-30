@@ -131,7 +131,7 @@ transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1, 0, 0, 0 )
 billboard = 1
 frames = SubResource( 1 )
 animation = "FrogSpin"
-frame = 23
+frame = 10
 playing = true
 
 [node name="Timer" type="Timer" parent="."]

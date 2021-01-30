@@ -1,5 +1,7 @@
 extends KinematicBody
 
+
+export var listenerHeight = 1.0
 # other script
 onready var groundCheck := $GroundCheck
 var Map2Circle := preload("res:///scripts/functions/map2circle.gd").new()
@@ -20,7 +22,8 @@ var normal := Vector3()
 var airFric := 1.0
 # in Rad
 var floor_n := 0.0
-const maxFloorAngle := 1.3
+export var maxFloor = 70
+var maxFloorAngle = deg2rad(maxFloor)
 const maxSlopeAngle := 1
 #calculate: cos(that radian)
 var wallAngle := 0.0
@@ -71,6 +74,9 @@ export var minJump = 10
 export var maxJump = 19
 export var spinjump = 25
 
+
+func _ready():
+	$Listener.transform.origin.y = listenerHeight
 
 
 func _input(event):

@@ -10,12 +10,12 @@ height = 0.2
 [node name="Goose" type="Spatial"]
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+listenerHeight = 1.5
 type = "goose"
 speed = 10.5
 constDecel = 14
 turnLow = 0.7
 turnHigh = 2.4
-canJump = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.845156, 0 )
