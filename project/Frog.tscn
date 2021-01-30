@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/textures/frog/0002.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/frog/0003.png" type="Texture" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://assets/textures/frog/0021.png" type="Texture" id=23]
 [ext_resource path="res://assets/textures/frog/0024.png" type="Texture" id=24]
 [ext_resource path="res://Sparkle.tscn" type="PackedScene" id=25]
+[ext_resource path="res://scripts/Frog.gd" type="Script" id=26]
+[ext_resource path="res://assets/sound/frog.wav" type="AudioStream" id=27]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -35,22 +37,113 @@ animations = [ {
 } ]
 
 [sub_resource type="SphereShape" id=2]
-radius = 0.648575
+radius = 0.72
 
 [node name="Frog" type="Spatial"]
+script = ExtResource( 26 )
+
+[node name="1" parent="." instance=ExtResource( 25 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.466075, 0, 0 )
+visible = false
+frame = 1
+playing = false
+
+[node name="2" parent="." instance=ExtResource( 25 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.348388, 0, -0.131035 )
+visible = false
+frame = 1
+playing = false
+
+[node name="3" parent="." instance=ExtResource( 25 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.371453, -0.156451, -0.400951 )
+visible = false
+frame = 1
+playing = false
+
+[node name="4" parent="." instance=ExtResource( 25 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0269673, -0.339971, 0.408391 )
+visible = false
+frame = 1
+playing = false
+
+[node name="5" parent="." instance=ExtResource( 25 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0269673, -0.339971, 0.408391 )
+visible = false
+frame = 1
+playing = false
+
+[node name="6" parent="." instance=ExtResource( 25 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.371453, -0.156451, -0.400951 )
+visible = false
+frame = 1
+playing = false
+
+[node name="7" parent="." instance=ExtResource( 25 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0269673, -0.339971, 0.408391 )
+visible = false
+frame = 1
+playing = false
+
+[node name="8" parent="." instance=ExtResource( 25 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.466075, 0, 0 )
+visible = false
+frame = 1
+playing = false
+
+[node name="9" parent="." instance=ExtResource( 25 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.348388, 0, -0.131035 )
+visible = false
+frame = 1
+playing = false
+
+[node name="10" parent="." instance=ExtResource( 25 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.371453, -0.156451, -0.400951 )
+visible = false
+frame = 1
+playing = false
+
+[node name="11" parent="." instance=ExtResource( 25 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0269673, -0.339971, 0.408391 )
+visible = false
+frame = 1
+playing = false
+
+[node name="12" parent="." instance=ExtResource( 25 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0269673, -0.339971, 0.408391 )
+visible = false
+frame = 1
+playing = false
+
+[node name="13" parent="." instance=ExtResource( 25 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.371453, -0.156451, -0.400951 )
+visible = false
+frame = 1
+playing = false
+
+[node name="14" parent="." instance=ExtResource( 25 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0269673, -0.339971, 0.408391 )
+visible = false
+frame = 1
+playing = false
 
 [node name="Frog" type="AnimatedSprite3D" parent="."]
-visible = false
+transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1, 0, 0, 0 )
 billboard = 1
 frames = SubResource( 1 )
 animation = "FrogSpin"
+frame = 23
 playing = true
 
-[node name="AnimatedSprite3D" parent="." instance=ExtResource( 25 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
-frame = 1
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.72
+one_shot = true
 
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 2 )
+
+[node name="quack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 27 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
