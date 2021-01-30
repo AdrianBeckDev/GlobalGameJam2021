@@ -2,14 +2,11 @@
 
 importer="hterrain_packed_texture_importer"
 type="StreamTexture"
-path.s3tc="res://.import/slot3_albedo_bump.packed_tex-e898ba6957a3d4bdfc31f1825c553d1f.s3tc.stex"
-path.etc2="res://.import/slot3_albedo_bump.packed_tex-e898ba6957a3d4bdfc31f1825c553d1f.etc2.stex"
+valid=false
 
 [deps]
 
 source_file="res://slot3_albedo_bump.packed_tex"
-dest_files=[ "res://.import/slot3_albedo_bump.packed_tex-e898ba6957a3d4bdfc31f1825c553d1f.s3tc.stex", "res://.import/slot3_albedo_bump.packed_tex-e898ba6957a3d4bdfc31f1825c553d1f.etc2.stex" ]
-
 [params]
 
 compress/mode=2
