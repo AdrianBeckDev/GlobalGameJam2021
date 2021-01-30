@@ -1,8 +1,0 @@
-{
-	"contains_albedo": true,
-	"resolution": 512,
-	"src": {
-		"a": "#ff888888",
-		"rgb": "res://terrain_textures/8bbb4a4fb6193f4773d2bea176e1d618.jpg"
-	}
-}

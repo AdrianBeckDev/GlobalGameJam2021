@@ -1,8 +1,0 @@
-{
-	"contains_albedo": true,
-	"resolution": 512,
-	"src": {
-		"a": "res://terrain_textures/30c9739edfa275a67e96e6265310d9c4.jpg",
-		"rgb": "res://terrain_textures/256x grass block.png"
-	}
-}
