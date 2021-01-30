@@ -1,16 +1,12 @@
 extends KinematicBody
 
-# debug var
-var kek := 0
-
-# Export vars
-export var ledgeLenght = 1.5
-
 # other script
-onready var groundCheck := $GroundCheck#add_child.RayCast.new()
+onready var groundCheck := $GroundCheck
 var Map2Circle := preload("res:///scripts/functions/map2circle.gd").new()
 var Spinput := preload("res:///scripts/functions/spinput.gd").new()
 var spinReturn
+
+export var type := "human"
 
 # rng
 onready var rng = RandomNumberGenerator.new()
@@ -49,30 +45,31 @@ var spinBuffer := 0.0
 var gravity = 55
 var gravmod := 1.0
 var grav := 1.0
-const speed := 17.7
+export var speed := 17.7
 var spd := 1.0
 
 # Acceleration
 var cel := 1.0
 var celmod := 1.0
 #var celconSlowdown = 1
-const constAccel := 4
-const constDecel := 7
+export var constAccel := 4
+export var constDecel := 7
 var accel = constAccel
 var decel = constDecel
 
 #turning
 var turnspeed :float
-var turnspd := 2.0
-const turnLow := .07
-const turnHigh := 1.2
+var turnspd := 1.0
+export var turnLow := .07
+export var turnHigh := 1.2
 var spinDir := 1
 
 #jumping
+export var canJump = true
 var jump = 1
-var minJump = 10
-var maxJump = 19
-var spinjump = 25
+export var minJump = 10
+export var maxJump = 19
+export var spinjump = 25
 
 
 
@@ -85,6 +82,8 @@ func _input(event):
 	intent = x*Vector2(camBasis.x.x,camBasis.x.z).normalized() + y*Vector2(camBasis.z.x,camBasis.z.z).normalized()
 	intent = Map2Circle._2circle(intent)
 	
+	States.intent = intent
+	
 	if Input.is_action_just_pressed("jump"):
 		jumpBuffer = inputBufferTime
 	if !Input.is_action_pressed("jump") && jumpBuffer < 0.03:
@@ -95,7 +94,32 @@ func _process(delta):
 	_spinput(delta)
 	_buffer(delta)
 	_move(delta)
+	_character(delta)
 	_move_and_slide(delta)
+
+
+func _character(delta):
+	match type:
+		"human":
+			_human()
+		"goose":
+			_goose()
+
+
+func _human():
+	pass
+
+
+func _goose():
+	if Input.is_action_pressed("action1"):
+		spd = 1.7
+		States.event = 1
+	else:
+		spd = 1
+		States.event = 0
+	if Input.is_action_pressed("action2"):
+		States.event = 2
+		velocityXZ = Vector2()
 
 
 func _spinput(delta) -> void:
@@ -134,9 +158,6 @@ func _move(delta) -> void:
 		cel = accel 
 	else:
 		cel = decel
-	if velocityXZ.length() > speed:
-		#work
-		cel = 1.4
 
 	velocityXZ = lerp(velocityXZ,intMove,cel*celmod*delta)
 	
@@ -160,27 +181,26 @@ func _move(delta) -> void:
 		velocityY -= gravity*gravmod*grav*delta
 		velocityY = clamp(velocityY,-150,50)
 
-
-
-	if wasGrounded > 0:
-		if jumpBuffer > 0:
-			jumpBuffer = 0
-			_offground()
-			if spinBuffer > 0:
-				velocityY = spinjump * jump
-			else:
-				velocityY = maxJump * jump
-
-	if Input.is_action_just_released("jump") && velocityY > minJump * jump:
-		velocityY = minJump * jump
-
+	if canJump:
+		if wasGrounded > 0:
+			if jumpBuffer > 0:
+				jumpBuffer = 0
+				_offground()
+				if spinBuffer > 0:
+					velocityY = spinjump * jump
+				else:
+					velocityY = maxJump * jump
+	
+		if Input.is_action_just_released("jump") && velocityY > minJump * jump:
+			velocityY = minJump * jump
+	
 	if !Input.is_action_pressed("jump") && velocityY < 0:
 		gravmod = 1.1
 	else:
 		gravmod = 1
 
-
-	call_deferred("_debug",momentum)
+	States.momentum = momentum
+	States.grounded = grounded
 
 
 

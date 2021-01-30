@@ -2,7 +2,7 @@ extends Camera
 
 export var smoothedMotion = 20
 export var camOffset = 12
-export (NodePath) onready var follow = get_node(follow)
+export (NodePath) onready var follow = get_node(follow).get_child(0)
 
 
 func _process(delta):
