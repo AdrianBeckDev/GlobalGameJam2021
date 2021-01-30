@@ -30,7 +30,7 @@ config/name="Project"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "zylann.hterrain" )
+enabled=PoolStringArray( "waterways", "zylann.hterrain" )
 
 [rendering]
 

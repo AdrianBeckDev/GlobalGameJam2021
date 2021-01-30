@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://terrain_textures/tree1.png" type="Texture" id=1]
+[ext_resource path="res://terrain_terra/tree1.glb" type="PackedScene" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+params_cull_mode = 2
+albedo_texture = ExtResource( 1 )
+proximity_fade_enable = true
+proximity_fade_distance = 1.0
+
+[node name="tree1" instance=ExtResource( 2 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+
+[node name="Cylinder" parent="." index="0"]
+material/0 = SubResource( 1 )
