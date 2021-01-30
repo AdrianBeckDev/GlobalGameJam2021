@@ -39,5 +39,5 @@ animations = [ {
 billboard = 1
 frames = SubResource( 1 )
 animation = "FrogSpin"
-frame = 14
+frame = 3
 playing = true

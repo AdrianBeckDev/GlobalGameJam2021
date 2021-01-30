@@ -1,0 +1,17 @@
+[gd_scene format=2]
+
+[node name="FirstScene" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_rotation = 0.0899827
+color = Color( 0.15625, 0.0646973, 0.0646973, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 486.0
+margin_top = 247.0
+margin_right = 526.0
+margin_bottom = 261.0
+text = "13keK"
