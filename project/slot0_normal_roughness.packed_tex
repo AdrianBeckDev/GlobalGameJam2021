@@ -1,0 +1,8 @@
+{
+	"contains_albedo": false,
+	"resolution": 512,
+	"src": {
+		"a": "res://terrain_textures/30c9739edfa275a67e96e6265310d9c4.jpg",
+		"rgb": "res://terrain_textures/ground_grass_tile_7_texture_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_1321757_o.jpg"
+	}
+}
