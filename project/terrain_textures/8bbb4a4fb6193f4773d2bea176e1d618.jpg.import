@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/tree1.png-579487f98cccc33a8d1adda40309aae9.s3tc.stex"
-path.etc2="res://.import/tree1.png-579487f98cccc33a8d1adda40309aae9.etc2.stex"
+path.s3tc="res://.import/8bbb4a4fb6193f4773d2bea176e1d618.jpg-4ba79dff2eb72ee063e428578cf20952.s3tc.stex"
+path.etc2="res://.import/8bbb4a4fb6193f4773d2bea176e1d618.jpg-4ba79dff2eb72ee063e428578cf20952.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/terrainstuff/terrain_textures/tree1.png"
-dest_files=[ "res://.import/tree1.png-579487f98cccc33a8d1adda40309aae9.s3tc.stex", "res://.import/tree1.png-579487f98cccc33a8d1adda40309aae9.etc2.stex" ]
+source_file="res://terrain_textures/8bbb4a4fb6193f4773d2bea176e1d618.jpg"
+dest_files=[ "res://.import/8bbb4a4fb6193f4773d2bea176e1d618.jpg-4ba79dff2eb72ee063e428578cf20952.s3tc.stex", "res://.import/8bbb4a4fb6193f4773d2bea176e1d618.jpg-4ba79dff2eb72ee063e428578cf20952.etc2.stex" ]
 
 [params]
 

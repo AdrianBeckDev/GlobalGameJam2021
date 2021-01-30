@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/256x grass block.png-51bfa91306ad942cfcaa6fa3de4faf12.s3tc.stex"
-path.etc2="res://.import/256x grass block.png-51bfa91306ad942cfcaa6fa3de4faf12.etc2.stex"
+path.s3tc="res://.import/30c9739edfa275a67e96e6265310d9c4.jpg-bb16924d82a18f44dd02ffbf550d0ab8.s3tc.stex"
+path.etc2="res://.import/30c9739edfa275a67e96e6265310d9c4.jpg-bb16924d82a18f44dd02ffbf550d0ab8.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/terrainstuff/terrain_textures/256x grass block.png"
-dest_files=[ "res://.import/256x grass block.png-51bfa91306ad942cfcaa6fa3de4faf12.s3tc.stex", "res://.import/256x grass block.png-51bfa91306ad942cfcaa6fa3de4faf12.etc2.stex" ]
+source_file="res://terrain_textures/30c9739edfa275a67e96e6265310d9c4.jpg"
+dest_files=[ "res://.import/30c9739edfa275a67e96e6265310d9c4.jpg-bb16924d82a18f44dd02ffbf550d0ab8.s3tc.stex", "res://.import/30c9739edfa275a67e96e6265310d9c4.jpg-bb16924d82a18f44dd02ffbf550d0ab8.etc2.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/thumb_gravel-033-256x256.jpg-4dde399325c3c6ed6055fcfeb0572fb4.stex"
+path="res://.import/thumb_gravel-033-256x256.jpg-955277c092afc4248c973abf91c865e9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/terrainstuff/terrain_textures/thumb_gravel-033-256x256.jpg"
-dest_files=[ "res://.import/thumb_gravel-033-256x256.jpg-4dde399325c3c6ed6055fcfeb0572fb4.stex" ]
+source_file="res://terrain_textures/thumb_gravel-033-256x256.jpg"
+dest_files=[ "res://.import/thumb_gravel-033-256x256.jpg-955277c092afc4248c973abf91c865e9.stex" ]
 
 [params]
 
