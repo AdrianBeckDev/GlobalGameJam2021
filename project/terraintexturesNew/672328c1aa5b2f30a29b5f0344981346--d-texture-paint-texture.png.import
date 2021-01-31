@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/672328c1aa5b2f30a29b5f0344981346--d-texture-paint-texture.png-b9b180e08a29aa6e58e9f502c06981ed.s3tc.stex"
+path.etc2="res://.import/672328c1aa5b2f30a29b5f0344981346--d-texture-paint-texture.png-b9b180e08a29aa6e58e9f502c06981ed.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://terraintexturesNew/672328c1aa5b2f30a29b5f0344981346--d-texture-paint-texture.png"
+dest_files=[ "res://.import/672328c1aa5b2f30a29b5f0344981346--d-texture-paint-texture.png-b9b180e08a29aa6e58e9f502c06981ed.s3tc.stex", "res://.import/672328c1aa5b2f30a29b5f0344981346--d-texture-paint-texture.png-b9b180e08a29aa6e58e9f502c06981ed.etc2.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=1
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
