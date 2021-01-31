@@ -111,7 +111,6 @@ func _character(delta):
 		"goose":
 			_goose()
 
-
 func _human():
 	if Input.is_action_pressed("action1") && grounded:
 		spd = 2.4

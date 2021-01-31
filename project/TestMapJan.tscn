@@ -30,6 +30,7 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="Hooman" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [node name="Camera" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19866, 0 )
@@ -38,7 +39,6 @@ follow = NodePath("../Hooman")
 
 [node name="Goose" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.174977, 0 )
-visible = false
 
 [node name="Frog" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.86524, 0.905791, 1.90418 )

@@ -12,6 +12,7 @@ func _process(delta):
 		else:
 			if States.intent.length() < 0.01:
 				$AnimationPlayer.play("G-Pose",.1,1)
+				$AudioStreamPlayer.play(0.4)
 			else:
 				match States.event:
 					0:

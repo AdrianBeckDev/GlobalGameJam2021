@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/goose.gltf" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/honk.png" type="Texture" id=2]
 [ext_resource path="res://scripts/goose.gd" type="Script" id=3]
+[ext_resource path="res://assets/sound/gansgutso.wav" type="AudioStream" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 params_cull_mode = 2
@@ -18,3 +19,6 @@ material/0 = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." index="1"]
 method_call_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 4 )
