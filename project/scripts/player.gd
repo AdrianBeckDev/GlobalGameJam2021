@@ -113,17 +113,26 @@ func _character(delta):
 
 
 func _human():
-	pass
+	if Input.is_action_pressed("action1") && grounded:
+		spd = 2.4
+		States.event = 1
+	else:
+		spd = 1
+		States.event = 0
+	if Input.is_action_pressed("action2") && grounded:
+		States.event = 2
+		velocityXZ = Vector2()
+		#cast
 
 
 func _goose():
-	if Input.is_action_pressed("action1"):
+	if Input.is_action_pressed("action1") && grounded:
 		spd = 1.7
 		States.event = 1
 	else:
 		spd = 1
 		States.event = 0
-	if Input.is_action_pressed("action2"):
+	if Input.is_action_pressed("action2") && grounded:
 		States.event = 2
 		velocityXZ = Vector2()
 
@@ -164,6 +173,8 @@ func _move(delta) -> void:
 		cel = accel 
 	else:
 		cel = decel
+	if decel == 0 && intent.length() > 0.1:
+		cel = 4
 
 	velocityXZ = lerp(velocityXZ,intMove,cel*celmod*delta)
 	
@@ -193,6 +204,7 @@ func _move(delta) -> void:
 				jumpBuffer = 0
 				_offground()
 				if spinBuffer > 0:
+					States.event = 3
 					velocityY = spinjump * jump
 				else:
 					velocityY = maxJump * jump
@@ -207,6 +219,7 @@ func _move(delta) -> void:
 
 	States.momentum = momentum
 	States.grounded = grounded
+	States.velocityY = velocityY
 
 
 

@@ -1,10 +1,9 @@
 extends Control
 
-
-#var scene = preload("res://Main.tscn").instance()
-
-
 var cursorPos = 0
+
+func _ready():
+	get_tree().paused = true
 
 func _input(event):
 	if Input.is_action_just_pressed("up"):
@@ -17,8 +16,8 @@ func _input(event):
 	match cursorPos:
 		1:
 			if Input.is_action_just_pressed("ui_accept"):
-				#get_tree().get_root().get_child(0).add_child("res://Map")
-				self.queue_free()
+				get_tree().paused = false
+				self.visible = false
 		2:
 			pass
 		3:

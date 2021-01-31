@@ -2,6 +2,7 @@ extends Spatial
 
 export var smoothedMotion = 5
 export var camOffset = 9
+export var height = 2
 var offsetFr = camOffset
 export var mouseSensitivity = 0.1
 export (NodePath) onready var follow = get_node(follow).get_child(0)
@@ -15,10 +16,10 @@ var pitch := 0.0
 
 func _ready():
 	$SpringArm.spring_length = camOffset
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta):
-	var pos = follow.global_transform.origin
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	var pos = follow.global_transform.origin + Vector3(0,height,0)
 	var own = global_transform.origin
 	global_transform.origin += (pos - own) * smoothedMotion * delta
 

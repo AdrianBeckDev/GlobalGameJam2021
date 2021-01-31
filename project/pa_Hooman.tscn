@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://hooman.gd" type="Script" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://hooman.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.372633
+height = 1.8263
+
+[node name="Hooman" type="Spatial"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+listenerHeight = 2.2
+maxFloor = 55
+speed = 10.0
+constAccel = 2
+constDecel = 4
+turnLow = 0.6
+turnHigh = 2.4
+maxJump = 25
+spinjump = 40
+
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.28382, 0 )
+shape = SubResource( 1 )
+
+[node name="hooman" parent="Player" instance=ExtResource( 3 )]
+script = ExtResource( 1 )

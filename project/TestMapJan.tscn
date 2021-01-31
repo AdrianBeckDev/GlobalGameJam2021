@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Frog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tree1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/textures/stonewall.png" type="Texture" id=3]
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://pa_goose.tscn" type="PackedScene" id=5]
+[ext_resource path="res://pa_Hooman.tscn" type="PackedScene" id=7]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -28,11 +29,16 @@ shape = SubResource( 1 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
+[node name="Hooman" parent="." instance=ExtResource( 7 )]
+
 [node name="Camera" parent="." instance=ExtResource( 4 )]
-follow = NodePath("../Goose")
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19866, 0 )
+camOffset = 8
+follow = NodePath("../Hooman")
 
 [node name="Goose" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.174977, 0 )
+visible = false
 
 [node name="Frog" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.86524, 0.905791, 1.90418 )
