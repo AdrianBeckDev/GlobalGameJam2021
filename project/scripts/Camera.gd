@@ -11,6 +11,7 @@ onready var ray = $RayCast
 
 var smoothRot = Vector2()
 
+var mouseVec = Vector2()
 var yaw := 0.0
 var pitch := 0.0
 
@@ -22,19 +23,31 @@ func _process(delta):
 	var pos = follow.global_transform.origin + Vector3(0,height,0)
 	var own = global_transform.origin
 	global_transform.origin += (pos - own) * smoothedMotion * delta
+	_do_tha_move()
 
 
-func _unhandled_input(event):
+func _input(event):
 	if event is InputEventMouseMotion:
-			var mouseVec : Vector2 = event.get_relative()
-			
+			mouseVec = event.get_relative()
 			yaw = yaw  - mouseVec.x * mouseSensitivity
-			pitch = clamp((pitch - mouseVec.y * mouseSensitivity),-85,-5)
+			pitch = clamp((pitch - mouseVec.y * mouseSensitivity),-85,10)
 			
 			smoothRot = lerp(smoothRot,Vector2(yaw,pitch),1.2)
 			yaw = smoothRot.x
 			pitch = smoothRot.y
-			
 			self.set_rotation(Vector3(deg2rad(pitch), deg2rad(yaw), 0.0))
+			
+	var x = -Input.get_action_strength("ml") + Input.get_action_strength("mr")
+	var y = -Input.get_action_strength("mu") + Input.get_action_strength("md")
+	mouseVec = Vector2(x,y)
 
+func _do_tha_move():
+		
+	yaw = yaw  - mouseVec.x * mouseSensitivity * 20
+	pitch = clamp((pitch - mouseVec.y * mouseSensitivity* 20),-85,10)
+	
+	smoothRot = lerp(smoothRot,Vector2(yaw,pitch),.4)
+	yaw = smoothRot.x
+	pitch = smoothRot.y
+	self.set_rotation(Vector3(deg2rad(pitch), deg2rad(yaw), 0.0))
 
