@@ -12,7 +12,7 @@ height = 1.8263
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 listenerHeight = 2.2
-maxFloor = 55
+maxFloor = 89
 speed = 10.0
 constAccel = 2
 constDecel = 4
