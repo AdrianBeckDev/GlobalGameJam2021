@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Pause.gd" type="Script" id=1]
+[ext_resource path="res://fonts/chikarroo.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/textures/frog/0003.png" type="Texture" id=3]
+[ext_resource path="res://fonts/basicfont.tres" type="DynamicFont" id=4]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+light_mode = 1
+
+[node name="Pause" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="unhide" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Frogcounter" type="Label" parent="unhide"]
+margin_left = 930.96
+margin_top = 15.1641
+margin_right = 990.96
+margin_bottom = 75.1641
+custom_fonts/font = ExtResource( 4 )
+text = ": 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Frog" type="Sprite" parent="unhide"]
+material = SubResource( 1 )
+position = Vector2( 882.877, 49.0317 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -147.0
+margin_top = -47.5
+margin_right = 147.0
+margin_bottom = 47.5
+custom_fonts/font = ExtResource( 2 )
+text = "Paused"

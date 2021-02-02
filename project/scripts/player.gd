@@ -7,6 +7,8 @@ onready var groundCheck := $GroundCheck
 var Map2Circle := preload("res:///scripts/functions/map2circle.gd").new()
 var Spinput := preload("res:///scripts/functions/spinput.gd").new()
 var spinReturn
+var x := 0.0
+var y := 0.0
 
 export var type := "human"
 
@@ -81,14 +83,8 @@ func _ready():
 
 func _input(event):
 	#print(sqrt(2 * gravity * 6.5))
-	var x = -Input.get_action_strength("left") + Input.get_action_strength("right")
-	var y = -Input.get_action_strength("up") + Input.get_action_strength("down")
-	
-	var camBasis = Basis(get_viewport().get_camera().global_transform.basis)
-	intent = x*Vector2(camBasis.x.x,camBasis.x.z).normalized() + y*Vector2(camBasis.z.x,camBasis.z.z).normalized()
-	intent = Map2Circle._2circle(intent)
-	
-	States.intent = intent
+	x = -Input.get_action_strength("left") + Input.get_action_strength("right")
+	y = -Input.get_action_strength("up") + Input.get_action_strength("down")
 	
 	if Input.is_action_just_pressed("jump"):
 		jumpBuffer = inputBufferTime
@@ -96,7 +92,16 @@ func _input(event):
 		jumpBuffer = 0
 
 
+func _inputmapstuff():
+	var camBasis = Basis(get_viewport().get_camera().global_transform.basis)
+	intent = x*Vector2(camBasis.x.x,camBasis.x.z).normalized() + y*Vector2(camBasis.z.x,camBasis.z.z).normalized()
+	intent = Map2Circle._2circle(intent)
+	
+	States.intent = intent
+	
+
 func _process(delta):
+	_inputmapstuff()
 	_spinput(delta)
 	_buffer(delta)
 	_move(delta)
@@ -223,9 +228,11 @@ func _move(delta) -> void:
 
 
 func _move_and_slide(delta):
+	#print(get_world().direct_space_state)
 	var colY :KinematicCollision
 	var counter = 0
 	var motion = Vector3(velocityXZ.x,velocityY,velocityXZ.y) * delta
+	var debugArrar = []
 	while motion.length() != 0:
 		var col = move_and_collide(motion,false) as KinematicCollision
 		
@@ -233,6 +240,7 @@ func _move_and_slide(delta):
 			var remainder = col.get_remainder() as Vector3
 			normal = col.get_normal()
 			groundState = _checkfloor(normal)
+			debugArrar.append(normal)
 			
 			match groundState:
 				1,2:
@@ -260,11 +268,11 @@ func _move_and_slide(delta):
 			#moving ground & stepping O.O
 			#step down
 			if grounded:
-				colY = move_and_collide(Vector3(0,-0.4,0),false,true,true)
+				colY = move_and_collide(Vector3(0,-0.8,0),false,true,true)
 				if colY:
 					var yState = _checkfloor(colY.get_normal())
 					if yState != 3:
-						move_and_collide(Vector3(0,-0.2,0),false)
+						move_and_collide(Vector3(0,-0.4,0),false)
 						if yState == 2:
 							move_and_collide(Vector3(0,colY.get_position().y - self.global_transform.origin.y,0),false)
 							groundState = yState
@@ -290,6 +298,13 @@ func _move_and_slide(delta):
 	
 	if !groundCheck.is_colliding() && groundState != 2:
 		grounded = false
+	if !grounded:
+		var fix = Vector3()
+		for i in debugArrar.size():
+			fix += debugArrar[i]
+		fix /= 4
+		_checkfloor(fix.normalized())
+	debugArrar = []
 
 
 #Check col normal

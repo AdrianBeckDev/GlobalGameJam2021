@@ -7,7 +7,7 @@ var can = true
 func _on_Area_body_entered(body):
 	if can:
 		if body.name == "Player":
-			
+			Signals.emit_signal("on_frog_collected")
 			can = false
 			$Frog.visible = false
 			$quack.playing = true
@@ -19,7 +19,7 @@ func _on_Area_body_entered(body):
 				ins.transform.origin.y = rng.randf_range(-100,100)/100
 				ins.transform.origin.z = rng.randf_range(-100,100)/100
 				ins.playing = true
-		$Timer.start()
+			$Timer.start()
 
 
 

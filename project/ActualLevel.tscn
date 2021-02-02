@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://pa_Hooman.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Frog.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Pause.tscn" type="PackedScene" id=5]
 
 [node name="Spatial" type="Spatial"]
 
@@ -41,3 +42,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31474, -6.56282, 146.003 )
 
 [node name="Frog6" parent="Spatial" instance=ExtResource( 4 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -8.10701, 24.0499, 236.645 )
+
+[node name="Pause" parent="." instance=ExtResource( 5 )]

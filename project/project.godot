@@ -36,7 +36,7 @@ Signals="*res://signals.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "scatter-master", "waterways", "zylann.hterrain" )
+enabled=PoolStringArray( "destruction", "scatter", "waterways", "zylann.hterrain" )
 
 [input]
 
