@@ -11,9 +11,12 @@ Repo for the Global Game Jam 2021: Never really build a game before. Don't judge
 
 
 ## Used Addons
+(We haven't made any of these addons, pls check out the creators, they make amazing stuff)
 
   - Zyllan h.terrain
   - Waterways 
+  - Destruction
+  - Scatter
 
 
 ## Play it at 
