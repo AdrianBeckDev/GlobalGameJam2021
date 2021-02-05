@@ -19,3 +19,6 @@ func _process(delta):
 						1:
 							$AudioStreamPlayer.play(0.4)
 							$AnimationPlayer.play("Nagooso_run",-1,1.5)
+	else:
+		$AnimationPlayer.play("G-Pose")
+		$AudioStreamPlayer.playing = false

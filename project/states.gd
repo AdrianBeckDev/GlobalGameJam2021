@@ -6,3 +6,4 @@ var event
 var intent = Vector2()
 var velocityY = 0
 var currentFollow 
+var hooman

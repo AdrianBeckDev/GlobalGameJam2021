@@ -23,6 +23,9 @@ spinjump = 40
 [node name="Area" parent="Player" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25254, 1.38629 )
 
+[node name="CollisionShape" parent="Player/Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.257316 )
+
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.28382, 0 )
 shape = SubResource( 1 )

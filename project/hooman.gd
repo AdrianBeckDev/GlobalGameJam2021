@@ -1,5 +1,7 @@
 extends Spatial
 
+func _ready():
+	States.hooman = self.get_parent()
 
 func _process(_delta):
 	if !States.grounded:

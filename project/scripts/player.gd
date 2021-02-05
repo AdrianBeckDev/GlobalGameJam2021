@@ -122,6 +122,16 @@ func _character(delta):
 			_goose()
 		"bear":
 			_bear()
+	if type != "human" && moveable:
+		if Input.is_action_just_pressed("uncapture"):
+			self.moveable = false
+			if States.hooman:
+				States.currentFollow = States.hooman
+				States.hooman.moveable = true
+				States.hooman.visible = true
+				States.hooman.global_transform = self.global_transform
+				States.hooman._dash(9,20)
+				States.hooman._offground()
 
 func _human(delta):
 	if Input.is_action_pressed("action1") && grounded:
@@ -152,9 +162,9 @@ func _human(delta):
 					ins.frame = rng.randf_range(1,7)
 					var scaleee = rng.randf_range(1,4)
 					ins.scale = Vector3(scaleee,scaleee,scaleee)
-					ins.global_transform.origin.x = $Area.global_transform.origin.x + $Area.global_transform.basis.z.x * rng.randf_range(-100,100)/100
+					ins.global_transform.origin.x = $Area.global_transform.origin.x + $Area.global_transform.basis.z.x * rng.randf_range(-100,100)/120
 					ins.global_transform.origin.y = $Area.global_transform.origin.y + .4 + rng.randf_range(-100,100)/200
-					ins.global_transform.origin.z = $Area.global_transform.origin.z + $Area.global_transform.basis.z.z * rng.randf_range(-100,100)/100
+					ins.global_transform.origin.z = $Area.global_transform.origin.z + $Area.global_transform.basis.z.z * rng.randf_range(-100,100)/120
 					ins.playing = true
 		States.event = 2
 		velocityXZ = Vector2()
@@ -177,12 +187,6 @@ func _goose():
 		velocityXZ = Vector2()
 
 
-func _spinput(delta) -> void:
-	spinReturn = Spinput._check_spinput(delta,intent,270)
-	if spinReturn != 0:
-		spinBuffer = 0.3
-		spinDir = -spinReturn
-
 func _bear():
 	if grounded:
 		if Input.is_action_pressed("action2"):
@@ -202,6 +206,14 @@ func _bear():
 			turnspd = 1
 			spd = 1
 			States.event = 0
+
+
+func _spinput(delta) -> void:
+	spinReturn = Spinput._check_spinput(delta,intent,270)
+	if spinReturn != 0:
+		spinBuffer = 0.3
+		spinDir = -spinReturn
+
 
 #Buffer
 func _buffer(delta) -> void:

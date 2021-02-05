@@ -14,3 +14,5 @@ func _process(delta):
 				$AnimationPlayer.play("Walk",-1,speed)
 			else:
 				$AnimationPlayer.play("B-Pose",0.1)
+	else:
+		$AnimationPlayer.play("B-Pose")
