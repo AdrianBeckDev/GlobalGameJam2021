@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Frog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tree1.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://pa_goose.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Pause.tscn" type="PackedScene" id=6]
 [ext_resource path="res://pa_Hooman.tscn" type="PackedScene" id=7]
+[ext_resource path="res://pa_bear.tscn" type="PackedScene" id=8]
+[ext_resource path="res://destructableblock.tscn" type="PackedScene" id=9]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -30,25 +32,26 @@ shape = SubResource( 1 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
-[node name="Hooman" parent="." instance=ExtResource( 7 )]
-visible = false
-
 [node name="Camera" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19866, 0 )
 camOffset = 8
-follow = NodePath("../Hooman")
+
+[node name="Hooman" parent="." instance=ExtResource( 7 )]
 
 [node name="Goose" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.174977, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.30338, 0, 1.51909 )
+
+[node name="Bear" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57154, 0, 0 )
 
 [node name="Frog" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.86524, 0.905791, 1.90418 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.46993, 1.18919, -0.0975502 )
 
 [node name="Frog2" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45272, 0.905791, 5.06455 )
 
 [node name="Frog3" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905791, 1.90418 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40677, 0.905791, 7.57225 )
 
 [node name="Frog4" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905791, 5.32109 )
@@ -68,3 +71,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.01378, 0, 4.4576 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86852, 0, 14.6754 )
 
 [node name="Pause" parent="." instance=ExtResource( 6 )]
+
+[node name="destructableblock" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53318, 1.2277, 0 )

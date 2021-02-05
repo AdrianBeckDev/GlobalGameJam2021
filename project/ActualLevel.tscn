@@ -12,7 +12,7 @@
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.8646, 52.0838, 120.932 )
 
 [node name="Pivot" parent="CharacterPack" instance=ExtResource( 1 )]
-camOffset = 7
+camOffset = 5
 follow = NodePath("../Hooman")
 
 [node name="Hooman" parent="CharacterPack" instance=ExtResource( 2 )]

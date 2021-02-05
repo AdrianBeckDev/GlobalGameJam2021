@@ -4,15 +4,15 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
-radius = 0.75
-height = 0.2
+radius = 0.485347
+height = 0.665006
 
 [node name="Goose" type="Spatial"]
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 listenerHeight = 1.5
 type = "goose"
-speed = 10.5
+speed = 7.5
 constDecel = 14
 turnLow = 0.7
 turnHigh = 2.4
@@ -23,3 +23,4 @@ transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.84
 shape = SubResource( 1 )
 
 [node name="goose" parent="Player" instance=ExtResource( 2 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0 )

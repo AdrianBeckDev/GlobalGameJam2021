@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="1 GOOOSE"
-run/main_scene="res://ActualLevel.tscn"
+run/main_scene="res://TestMapJan.tscn"
 
 [autoload]
 

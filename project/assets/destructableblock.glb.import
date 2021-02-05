@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/hooman.gltf-471e16999a11479f2d4319cc24d6fbcb.scn"
+path="res://.import/destructableblock.glb-ff35e0550fa118d12c46e4c20ada1c16.scn"
 
 [deps]
 
-source_file="res://assets/hooman.gltf"
-dest_files=[ "res://.import/hooman.gltf-471e16999a11479f2d4319cc24d6fbcb.scn" ]
+source_file="res://assets/destructableblock.glb"
+dest_files=[ "res://.import/destructableblock.glb-ff35e0550fa118d12c46e4c20ada1c16.scn" ]
 
 [params]
 
@@ -27,7 +27,7 @@ meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 external_files/store_in_subdir=false
 animation/import=true
-animation/fps=24.0
+animation/fps=15
 animation/filter_script=""
 animation/storage=false
 animation/keep_custom_tracks=false

@@ -5,9 +5,8 @@ export var camOffset = 9
 export var height = 2
 var offsetFr = camOffset
 export var mouseSensitivity = 0.1
-export (NodePath) onready var follow = get_node(follow).get_child(0)
+onready var follow
 onready var cam = $SpringArm/Camera
-onready var ray = $RayCast
 
 var smoothRot = Vector2()
 
@@ -19,11 +18,13 @@ func _ready():
 	$SpringArm.spring_length = camOffset
 
 func _process(delta):
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	var pos = follow.global_transform.origin + Vector3(0,height,0)
-	var own = global_transform.origin
-	global_transform.origin += (pos - own) * smoothedMotion * delta
-	_do_tha_move()
+	follow = States.currentFollow
+	if follow:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		var pos = follow.global_transform.origin + Vector3(0,height,0)
+		var own = global_transform.origin
+		global_transform.origin += (pos - own) * smoothedMotion * delta
+		_do_tha_move()
 
 
 func _input(event):

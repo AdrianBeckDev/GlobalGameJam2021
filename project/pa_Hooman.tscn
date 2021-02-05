@@ -11,13 +11,17 @@ height = 1.8263
 [node name="Hooman" type="Spatial"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+moveable = true
 listenerHeight = 2.2
 maxFloor = 89
-speed = 10.0
+speed = 7.0
 turnLow = 0.6
 turnHigh = 2.4
 maxJump = 25
 spinjump = 40
+
+[node name="Area" parent="Player" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25254, 1.38629 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.28382, 0 )
@@ -25,3 +29,7 @@ shape = SubResource( 1 )
 
 [node name="hooman" parent="Player" instance=ExtResource( 3 )]
 script = ExtResource( 1 )
+
+[node name="Spatial" type="Spatial" parent="Player"]
+
+[editable path="Player"]

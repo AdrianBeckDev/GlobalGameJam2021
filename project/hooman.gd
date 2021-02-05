@@ -1,21 +1,24 @@
 extends Spatial
 
 
-func _process(delta):
+func _process(_delta):
 	if !States.grounded:
-		if States.event == 3 or sign(States.velocityY) == -1:
-			$AnimationPlayer.play("T-Pose",0.2)
-		else:
-			$AnimationPlayer.play("Jumpu")
+		$AnimationPlayer.play("Fallu")
 	else:
 		if States.event == 2:
-			$AnimationPlayer.play("Cast",0.1)
+			$AnimationPlayer.play("Cast",0.1,2)
 		else:
 			if States.intent.length() < 0.01:
 				$AnimationPlayer.play("idle")
 			else:
 				match States.event:
 					0:
-						$AnimationPlayer.play("Walk",.1,1)
+						var speed = lerp(0.5,1.3,States.momentum)
+						$AnimationPlayer.play("Walk",.1,speed)
 					1:
-						$AnimationPlayer.play("Run",-1,1.5)
+						if States.momentum < 0.6:
+							var speed = lerp(0.5,1.3,States.momentum)
+							$AnimationPlayer.play("Walk",.1,speed)
+						else:
+							var speed = lerp(0.1,1.8,States.momentum)
+							$AnimationPlayer.play("Run",-1,speed)

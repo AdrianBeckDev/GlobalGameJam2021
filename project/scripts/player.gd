@@ -1,6 +1,9 @@
 extends KinematicBody
 
 
+var castTimer = 0
+
+export var moveable = false
 export var listenerHeight = 1.0
 # other script
 onready var groundCheck := $GroundCheck
@@ -81,7 +84,7 @@ func _ready():
 	$Listener.transform.origin.y = listenerHeight
 
 
-func _input(event):
+func _input(_event):
 	#print(sqrt(2 * gravity * 6.5))
 	x = -Input.get_action_strength("left") + Input.get_action_strength("right")
 	y = -Input.get_action_strength("up") + Input.get_action_strength("down")
@@ -101,32 +104,65 @@ func _inputmapstuff():
 	
 
 func _process(delta):
-	_inputmapstuff()
-	_spinput(delta)
-	_buffer(delta)
-	_move(delta)
-	_character(delta)
-	_move_and_slide(delta)
+	if moveable:
+		States.currentFollow = self
+		_inputmapstuff()
+		_spinput(delta)
+		_buffer(delta)
+		_move(delta)
+		_character(delta)
+		_move_and_slide(delta)
 
 
 func _character(delta):
 	match type:
 		"human":
-			_human()
+			_human(delta)
 		"goose":
 			_goose()
+		"bear":
+			_bear()
 
-func _human():
+func _human(delta):
 	if Input.is_action_pressed("action1") && grounded:
-		spd = 2.4
+		spd = 2.5
 		States.event = 1
 	else:
 		spd = 1
 		States.event = 0
 	if Input.is_action_pressed("action2") && grounded:
+		castTimer += delta
+		var sparkle = preload("res://Sparkle.tscn")
+		if castTimer >= 0.4:
+			var check = $Area.get_overlapping_bodies()
+			var dontcapturetwo = 0
+			for i in check.size():
+				if check[i].name == "Player":
+					if dontcapturetwo == 0:
+						check[i].moveable = true
+						self.moveable = false
+						self.visible = false
+					dontcapturetwo += 1
+			if get_child_count() == 5:
+				self.add_child(Spatial.new())
+				for i in 12:
+					get_child(5).add_child(sparkle.instance())
+					var ins = get_child(5).get_child(i)
+					ins.visible = true
+					ins.frame = rng.randf_range(1,7)
+					var scaleee = rng.randf_range(1,4)
+					ins.scale = Vector3(scaleee,scaleee,scaleee)
+					ins.global_transform.origin.x = $Area.global_transform.origin.x + $Area.global_transform.basis.z.x * rng.randf_range(-100,100)/100
+					ins.global_transform.origin.y = $Area.global_transform.origin.y + .4 + rng.randf_range(-100,100)/200
+					ins.global_transform.origin.z = $Area.global_transform.origin.z + $Area.global_transform.basis.z.z * rng.randf_range(-100,100)/100
+					ins.playing = true
 		States.event = 2
 		velocityXZ = Vector2()
 		#cast
+	else:
+		castTimer = 0
+		if get_child_count() == 6:
+			get_child(5).free()
 
 
 func _goose():
@@ -147,6 +183,25 @@ func _spinput(delta) -> void:
 		spinBuffer = 0.3
 		spinDir = -spinReturn
 
+func _bear():
+	if grounded:
+		if Input.is_action_pressed("action2"):
+			var check = $Area.get_overlapping_bodies()
+			for i in check.size():
+				if check[i].name == "DestroyMe":
+					check[i].get_parent().get_node("Destruction").destroy()
+			turnspd = 0.5
+			spd = .15
+			States.event = 1
+		elif Input.is_action_pressed("jump"):
+			turnspd = 0.1
+			spd = 1
+			velocityXZ = Vector2()
+			States.event = 2
+		else:
+			turnspd = 1
+			spd = 1
+			States.event = 0
 
 #Buffer
 func _buffer(delta) -> void:
@@ -208,7 +263,6 @@ func _move(delta) -> void:
 				jumpBuffer = 0
 				_offground()
 				if spinBuffer > 0:
-					States.event = 3
 					velocityY = spinjump * jump
 				else:
 					velocityY = maxJump * jump
@@ -221,7 +275,7 @@ func _move(delta) -> void:
 	else:
 		gravmod = 1
 
-	States.momentum = momentum
+	States.momentum = normMomentum
 	States.grounded = grounded
 	States.velocityY = velocityY
 

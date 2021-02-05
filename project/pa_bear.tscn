@@ -5,16 +5,26 @@
 [ext_resource path="res://scripts/bear.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
-radius = 1.40431
-height = 1.9552
+radius = 1.12467
+height = 1.55352
 
 [node name="Bear" type="Spatial"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+listenerHeight = 2.0
+type = "bear"
+speed = 8.0
+canJump = false
+
+[node name="Area" parent="Player" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27505, 2.41527 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34682, -0.205047 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15681, -0.116205 )
 shape = SubResource( 1 )
 
 [node name="bear" parent="Player" instance=ExtResource( 2 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0 )
 script = ExtResource( 3 )
+
+[editable path="Player"]
