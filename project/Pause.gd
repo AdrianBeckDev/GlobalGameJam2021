@@ -12,8 +12,10 @@ func _input(event):
 	if event.is_action_pressed("ui_select"):
 		get_tree().paused = new_pause_state
 		$Label.visible = new_pause_state
-	if new_pause_state:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if new_pause_state:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _on_frog_collect():

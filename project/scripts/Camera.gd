@@ -16,11 +16,12 @@ var pitch := 0.0
 
 func _ready():
 	$SpringArm.spring_length = camOffset
+	$SpringArm/AnimationPlayer.play("Skybox_go_brr",-1,0.5)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta):
 	follow = States.currentFollow
 	if follow:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		var pos = follow.global_transform.origin + Vector3(0,height,0)
 		var own = global_transform.origin
 		global_transform.origin += (pos - own) * smoothedMotion * delta
@@ -31,7 +32,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 			mouseVec = event.get_relative()
 			yaw = yaw  - mouseVec.x * mouseSensitivity
-			pitch = clamp((pitch - mouseVec.y * mouseSensitivity),-85,10)
+			pitch = clamp((pitch - mouseVec.y * mouseSensitivity),-87,45)
 			
 			smoothRot = lerp(smoothRot,Vector2(yaw,pitch),1.2)
 			yaw = smoothRot.x
@@ -45,7 +46,7 @@ func _input(event):
 func _do_tha_move():
 		
 	yaw = yaw  - mouseVec.x * mouseSensitivity * 20
-	pitch = clamp((pitch - mouseVec.y * mouseSensitivity* 20),-85,10)
+	pitch = clamp((pitch - mouseVec.y * mouseSensitivity* 20),-87,45)
 	
 	smoothRot = lerp(smoothRot,Vector2(yaw,pitch),.4)
 	yaw = smoothRot.x

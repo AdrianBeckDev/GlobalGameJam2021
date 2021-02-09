@@ -9,7 +9,7 @@ points = PoolVector3Array( -0.0167851, -0.0136142, 0, -0.0167851, 0.0137191, 0, 
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.00960017
-height = 0.0871675
+height = 0.0974758
 
 [sub_resource type="ArrayMesh" id=3]
 surfaces/0 = {
@@ -44,6 +44,6 @@ transform = Transform( -187.617, 0, 0, 0, -1.31503e-05, -187.617, 0, 220.626, -1
 shape = SubResource( 2 )
 
 [node name="Cylinder" type="MeshInstance" parent="CollisionShape2"]
-transform = Transform( -0.680369, 0.835391, 0, -0.710404, -0.578576, 2.02505e-13, -1.20792e-13, -8.88178e-14, -1.07739, 0.000286013, 7.31125e-05, 0.0497442 )
+transform = Transform( -0.680369, 0.835391, 0, -0.710404, -0.578576, 2.02505e-13, -1.20792e-13, -9.23706e-14, -1.07739, 0.000286013, 7.31125e-05, 0.0497442 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )

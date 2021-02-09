@@ -1,7 +1,6 @@
 [gd_resource type="SpatialMaterial" load_steps=2 format=2]
 
-[ext_resource path="res://slot2_albedo_bump.packed_tex" type="Texture" id=1]
+[ext_resource path="res://slot3_albedo_bump.packed_tex" type="Texture" id=1]
 
 [resource]
 albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 3, 2, 1 )
